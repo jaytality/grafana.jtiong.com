@@ -1,0 +1,19 @@
+version: "3.3"
+
+services:
+  grafana:
+    image: grafana/grafana:5.1.0
+    external_links:
+        - core_db
+    container_name: grafana.jtiong.com
+    environment:
+        VIRTUAL_HOST: grafana.jtiong.com
+        VIRTUAL_PORT: 3000
+        LETSENCRYPT_HOST: grafana.jtiong.com
+        LETSENCRYPT_EMAIL:
+    restart: always
+
+networks:
+    default:
+        external:
+        name: webproxy
